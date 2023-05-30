@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+nav, .page-footer {
+    background-color: rgb(46, 78, 46);
+    font-family: 'Raleway', sans-serif;
+}
+
+footer.page-footer {
+    padding-top: 0;
+    text-align: left;
+}
+
+h1 {
+    font-size: 5vh;
+}
+
+h2 {
+    font-size: 3.5vh;
+}
+
+h4 {
+    font-size: 2.5vh;
+}
+
+h5 {
+    font-size: 2vh;
+    padding-bottom: 5%;
+}

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>About</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>About Plant Collector</h1>
     <h2>Welcome to Plant Collector - Your Personal House Plant Tracker!</h2>
     <p>
@@ -38,7 +32,5 @@
         houseplants. Sign up on Plant Collector today and watch your green collection 
         thrive like never before!
     </p>
-    <h4>Happy Plant Collecting!</h4>
-    <footer>All Rights Reserved, &copy; 2023 Plant Collector</footer>
-</body>
-</html>
+    <h5>Happy Plant Collecting!</h5>
+{% endblock %}
