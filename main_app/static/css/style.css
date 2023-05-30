@@ -10,8 +10,7 @@ main {
     flex: 1 0 auto;
 }
 
-nav, .page-footer {
-    background-color: rgb(46, 78, 46);
+.nav-wrapper, .page-footer {
     font-family: 'Raleway', sans-serif;
 }
 

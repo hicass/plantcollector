@@ -1,10 +1,5 @@
 from django.shortcuts import render
-
-# Baby step:
-plants = [
-    {'name': 'Pothos', 'family': 'Araceae', 'care': 'Water every 1-2 weeks'},
-    {'name': 'Zee Zee Plant', 'family': 'Araceae', 'care': 'Water every 3-4 weeks'}
-]
+from .models import Plant
 
 def home(request):
     return render(request, 'home.html')
@@ -13,6 +8,13 @@ def about(request):
     return render(request, 'about.html')
 
 def plants_index(request):
+    plants = Plant.objects.all()
     return render(request, 'plants/index.html', {
         'plants': plants
+    })
+
+def plants_detail(request, plant_id):
+    plant = Plant.objects.get(id=plant_id)
+    return render(request, 'plants/detail.html', {
+        'plant': plant
     })

@@ -12,12 +12,13 @@
     <link href='https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap' rel='stylesheet'>
     <link rel='stylesheet' type='text/css' href="{% static 'css/style.css' %}">
     <title>Plant Collector</title>
+</head>
 <body>
     <header class='navbar-fixed'>
         <nav>
-          <div class='nav-wrapper'>
+          <div class='nav-wrapper light-green darken-4'>
             <ul>
-              <li><a href='/' class='left brand-logo'>&nbsp;&nbsp;Plant Collector</a></li>
+              <li><a href='/' class='left brand-logo'><img src='https://masterplantexas.com/wp-content/uploads/plant-icon.png' width='60rem'></a></li>
             </ul>
             <ul class='right'>
               <li><a href='/about'>About</a></li>
@@ -30,7 +31,7 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer class='page-footer'>
+    <footer class='page-footer light-green darken-4'>
         <div class='right'>All Rights Reserved, &copy; 2023 Plant Collector &nbsp;</div>
     </footer>
 </body>
