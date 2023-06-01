@@ -11,3 +11,14 @@ class Plant(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'plant_id': self.id})
+
+class Watering(models.Model):
+    date = models.DateField('Watering Date')
+
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Watered on: {self.date}'
+
+    class Meta:
+        ordering = ['-date']
