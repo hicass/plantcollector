@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Plant
 
 def home(request):
@@ -18,3 +19,15 @@ def plants_detail(request, plant_id):
     return render(request, 'plants/detail.html', {
         'plant': plant
     })
+
+class PlantCreate(CreateView):
+    model = Plant
+    fields = '__all__'
+
+class PlantUpdate(UpdateView):
+    model = Plant
+    fields = ['family', 'care']
+
+class PlantDelete(DeleteView):
+    model = Plant
+    success_url = '/plants'
