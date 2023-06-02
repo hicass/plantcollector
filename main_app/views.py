@@ -50,6 +50,9 @@ def add_watering(request, plant_id):
 class GrowingMediaList(ListView):
     model = GrowingMedia
 
+class GrowingMediaDetail(DetailView):
+    model = GrowingMedia
+
 class GrowingMediaCreate(CreateView):
     model = GrowingMedia
     fields = '__all__'
