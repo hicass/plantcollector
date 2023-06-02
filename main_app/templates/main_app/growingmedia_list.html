@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Your Growing Mediums:</h1>
+
+{% for growingmedia in growingmedia_list %}
+    <a>
+        <div class='card'>
+            <div class='card-content'>
+                <span class='card-title'>{{ growingmedia.name }}</span>
+            </div>
+        </div>
+    </a>
+{% endfor %}
+
+{% endblock %}

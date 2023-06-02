@@ -7,13 +7,13 @@
     {% else %}
         <h1>Add Plant</h1>
     {% endif %}
-    
+
         <form action='' method='POST'>
             {% csrf_token %}
             <table>
             {{ form.as_table }}
             </table>
-            <input type='submit' value='Submit!' class='btn light-green darken-4'>
+            <input type='submit' value='add!' class='btn light-green darken-4'>
         </form>
 
 {% endblock %}

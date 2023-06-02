@@ -10,6 +10,8 @@ urlpatterns = [
     path('plants/<int:pk>/update/', views.PlantUpdate.as_view(), name='plants_update'),
     path('plants/<int:pk>/delete/', views.PlantDelete.as_view(), name='plants_delete'),
     path('plants/<int:plant_id>/add_watering/', views.add_watering, name='add_watering'),
+    path('growing_med/', views.GrowingMediaList.as_view(), name='growing_med_index'),
+    path('growing_med/create/', views.GrowingMediaCreate.as_view(), name='growing_med_create'),
 ]
 
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Plant
+from django.views.generic import ListView, DetailView
+from .models import Plant, GrowingMedia
 from .forms import WateringForm
 
 def home(request):
@@ -45,3 +46,10 @@ def add_watering(request, plant_id):
         new_watering.save()
 
     return redirect('detail', plant_id=plant_id)
+
+class GrowingMediaList(ListView):
+    model = GrowingMedia
+
+class GrowingMediaCreate(CreateView):
+    model = GrowingMedia
+    fields = '__all__'
