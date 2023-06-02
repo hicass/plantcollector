@@ -33,13 +33,13 @@
                 <thead>
                     <tr><th>Date</th></tr>
                 </thead>
-                <tbody>
+                <tody>
                     {% for watering in plant.watering_set.all %}
                     <tr>
                         <td>{{ watering.date }}</td>
                     </tr>
                     {% endfor %}
-                </tbody>
+                </tody>
             </table>
         </div>
     </div>
@@ -50,6 +50,47 @@
     <a href='{% url "plants_delete" plant.id %}'class='grey-text text-darken-2'>
         Delete
     </a>
+
+    <hr>
+
+    <div class='row'>
+        <div class='col s6'>
+            <h3>Your {{ plant.name }}'s Growing Media:</h3>
+            {% if plant.growing_media.count %}
+                {% for growing_med in plant.growing_media.all %}
+                <div class='card'>
+                    <div class='card-content'>
+                        <span class='card-title'>{{ growing_med.name }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                    <h5>Nothing listed...</h5>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class='col s6'>
+        <h3>Available Growing Media:</h3>
+        {% if growing_media.count %}
+        <p>testing</p>
+            {% for growing_med in growing_media.all %}
+                <div class='card'>
+                    <div class='card-content'>
+                        <span class='card-title'>{{ growing_med.name }}</span>
+                    </div>
+                    <div class='card-action'>
+                        <form action='{% url "assoc_growing_med" plant.id growing_med.id %}' method='POST'>
+                            {% csrf_token %}
+                            <button type='submit' class='btn light-green darken-4'>+</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h5>Your {{ plant.name }} is already using all available Growing Media...</h5>
+        {% endif %}
+    </div>
 
 <script>
     const dateEl = document.getElementById('id_date');

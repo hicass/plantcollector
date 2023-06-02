@@ -19,11 +19,14 @@ def plants_index(request):
 
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
+    id_list = plant.growing_media.all().values_list('id')
+    growing_media_plant_doest_use = GrowingMedia.objects.exclude(id__in=id_list)
     watering_form = WateringForm()
 
     return render(request, 'plants/detail.html', {
         'plant': plant,
-        'watering_form': watering_form
+        'watering_form': watering_form,
+        'growing_media': growing_media_plant_doest_use
     })
 
 class PlantCreate(CreateView):
@@ -64,3 +67,8 @@ class GrowingMediaUpdate(UpdateView):
 class GrowingMediaDelete(DeleteView):
     model = GrowingMedia
     success_url = '/growing_med'
+
+def assoc_growing_med(request, plant_id, growing_med_id):
+    Plant.objects.get(id=plant_id).growing_media.add(growing_med_id)
+
+    return redirect('detail', plant_id=plant_id)
