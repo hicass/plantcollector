@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Delete {{object.name}}</h1>
+
+    <h4>Are you sure?</h4>
+
+    <form action='' method='POST'>
+        {% csrf_token %}
+        <input type='submit' value='Yes - Delete!' class='btn light-green darken-4'>
+        <a href='{% url "detail" growingmedia.id %}' class='grey-text text-darken-2'>I change my mind...</a>
+    </form>
+
+{% endblock %}

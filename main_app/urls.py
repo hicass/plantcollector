@@ -14,6 +14,7 @@ urlpatterns = [
     path('growing_med/<int:pk>/', views.GrowingMediaDetail.as_view(), name='growing_med_detail'),
     path('growing_med/create/', views.GrowingMediaCreate.as_view(), name='growing_med_create'),
     path('growing_med/<int:pk>/update/', views.GrowingMediaUpdate.as_view(), name='growing_med_update'),
+    path('growing_med/<int:pk>/delete/', views.GrowingMediaDelete.as_view(), name='growing_med_delete'),
 ]
 
 

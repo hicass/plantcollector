@@ -60,3 +60,7 @@ class GrowingMediaCreate(CreateView):
 class GrowingMediaUpdate(UpdateView):
     model = GrowingMedia
     fields = '__all__'
+
+class GrowingMediaDelete(DeleteView):
+    model = GrowingMedia
+    success_url = '/growing_med'
