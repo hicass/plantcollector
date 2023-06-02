@@ -56,3 +56,7 @@ class GrowingMediaDetail(DetailView):
 class GrowingMediaCreate(CreateView):
     model = GrowingMedia
     fields = '__all__'
+
+class GrowingMediaUpdate(UpdateView):
+    model = GrowingMedia
+    fields = '__all__'

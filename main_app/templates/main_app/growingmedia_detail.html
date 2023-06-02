@@ -8,7 +8,10 @@
             <span class='card-title'>About:</span>
             <p>{{ growingmedia.description }}</p>
         </div>
-        <div class="card-action">
+        <div class='card-action'>
+            <a href='{% url "growing_med_update" growingmedia.id %}' class='light-green-text text-darken-4'>
+                Edit
+            </a>
         </div>
     </div>
 
