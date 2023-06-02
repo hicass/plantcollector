@@ -21,6 +21,13 @@
                     <p>{{ plant.care }}</p>
                 </div>
             </div>
+            {% for photo in plant.photo_set.all %}
+                <img class='responsive-img card-panel' src='{{ photo.url }}''>
+            {% empty %}
+                <div class='card-panel grey-text text-darken-2 center-align'>
+                    No Photos Uploaded
+                </div>
+            {% endfor %}
         </div>
         <div class='col s6'>
             <span>Watering Log:</span>
