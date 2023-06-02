@@ -72,3 +72,8 @@ def assoc_growing_med(request, plant_id, growing_med_id):
     Plant.objects.get(id=plant_id).growing_media.add(growing_med_id)
 
     return redirect('detail', plant_id=plant_id)
+
+def unassoc_growing_med(request, plant_id, growing_med_id):
+    Plant.objects.get(id=plant_id).growing_media.remove(growing_med_id)
+
+    return redirect('detail', plant_id=plant_id)
