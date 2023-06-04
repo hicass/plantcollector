@@ -34,3 +34,14 @@ h5 {
     font-size: 2vh;
     padding-bottom: 5%;
 }
+
+.home-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-page-img {
+    width: 25vw;
+    padding: 2%;
+}
