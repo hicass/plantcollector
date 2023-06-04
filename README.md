@@ -15,16 +15,16 @@
 ## Preview:
 
 #### Home Page:
-[!Home Page](./readme-assets/home-page.png)
+![Home Page](./readme-assets/home-page.png)
 
 #### Sign Up Page:
-[!Sign Up Page](./readme-assets/signup-page.png)
+![Sign Up Page](./readme-assets/signup-page.png)
 
 #### Plants Index Page:
-[!Index Page](./readme-assets/index-page.png)
+![Index Page](./readme-assets/index-page.png)
 
 #### Plant Detail Page:
-[!Detail Page](./readme-assets/detail-page.png)
+![Detail Page](./readme-assets/detail-page.png)
 
 ### Next Steps:
 - Add functionality to upload photos in a Growing Media's detail page.
