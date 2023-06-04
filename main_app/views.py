@@ -1,11 +1,13 @@
-import uuid
 import boto3
+import uuid
 import os
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 from .models import Plant, GrowingMedia, Photo
 from .forms import WateringForm
 
@@ -18,6 +20,7 @@ def about(request):
     return render(request, 'about.html')
 
 
+@login_required
 def plants_index(request):
     plants = Plant.objects.filter(user=request.user)
 
@@ -26,6 +29,7 @@ def plants_index(request):
     })
 
 
+@login_required
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     id_list = plant.growing_media.all().values_list('id')
@@ -39,7 +43,7 @@ def plants_detail(request, plant_id):
     })
 
 
-class PlantCreate(CreateView):
+class PlantCreate(LoginRequiredMixin, CreateView):
     model = Plant
     fields = ['name', 'family', 'care']
 
@@ -49,16 +53,18 @@ class PlantCreate(CreateView):
         return super().form_valid(form)
 
 
-class PlantUpdate(UpdateView):
+class PlantUpdate(LoginRequiredMixin, UpdateView):
     model = Plant
     fields = ['family', 'care']
 
 
-class PlantDelete(DeleteView):
+
+class PlantDelete(LoginRequiredMixin, DeleteView):
     model = Plant
     success_url = '/plants'
 
 
+@login_required
 def add_watering(request, plant_id):
     form = WateringForm(request.POST)
     if form.is_valid():
@@ -69,41 +75,44 @@ def add_watering(request, plant_id):
     return redirect('detail', plant_id=plant_id)
 
 
-class GrowingMediaList(ListView):
+class GrowingMediaList(LoginRequiredMixin, ListView):
     model = GrowingMedia
 
 
-class GrowingMediaDetail(DetailView):
+class GrowingMediaDetail(LoginRequiredMixin, DetailView):
     model = GrowingMedia
 
 
-class GrowingMediaCreate(CreateView):
-    model = GrowingMedia
-    fields = '__all__'
-
-
-class GrowingMediaUpdate(UpdateView):
+class GrowingMediaCreate(LoginRequiredMixin, CreateView):
     model = GrowingMedia
     fields = '__all__'
 
 
-class GrowingMediaDelete(DeleteView):
+class GrowingMediaUpdate(LoginRequiredMixin, UpdateView):
+    model = GrowingMedia
+    fields = '__all__'
+
+
+class GrowingMediaDelete(LoginRequiredMixin, DeleteView):
     model = GrowingMedia
     success_url = '/growing_med'
 
 
+@login_required
 def assoc_growing_med(request, plant_id, growing_med_id):
     Plant.objects.get(id=plant_id).growing_media.add(growing_med_id)
 
     return redirect('detail', plant_id=plant_id)
 
 
+@login_required
 def unassoc_growing_med(request, plant_id, growing_med_id):
     Plant.objects.get(id=plant_id).growing_media.remove(growing_med_id)
 
     return redirect('detail', plant_id=plant_id)
 
 
+@login_required
 def add_photo(request, plant_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -122,6 +131,7 @@ def add_photo(request, plant_id):
             print(e)
 
     return redirect('detail', plant_id=plant_id)
+
 
 def signup(request):
     error_message = ''
