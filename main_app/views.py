@@ -39,7 +39,12 @@ def plants_detail(request, plant_id):
 
 class PlantCreate(CreateView):
     model = Plant
-    fields = '__all__'
+    fields = ['name', 'family', 'care']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+
+        return super().form_valid(form)
 
 
 class PlantUpdate(UpdateView):
