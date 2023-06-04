@@ -3,35 +3,40 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
-    <link rel='preconnect' href='https://fonts.googleapis.com'>
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-    <link href='https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap' rel='stylesheet'>
-    <link rel='stylesheet' type='text/css' href="{% static 'css/main.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Plant Collector</title>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap' rel='stylesheet'>
+  <link rel='stylesheet' type='text/css' href="{% static 'css/main.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title>Plant Collector</title>
 </head>
 <body>
 
-    <header class='navbar-fixed'>
-        <nav>
-          <div class='nav-wrapper light-green darken-4'>
-            <ul>
-              <li><a href='/' class='left brand-logo'><img src='https://masterplantexas.com/wp-content/uploads/plant-icon.png' width='60rem'></a></li>
-            </ul>
-            <ul class='right'>
-              <li><a href='{% url "about" %}'>About</a></li>
+  <header class='navbar-fixed'>
+      <nav>
+        <div class='nav-wrapper light-green darken-4'>
+          <ul>
+            <li><a href='/' class='left brand-logo'><img src='https://masterplantexas.com/wp-content/uploads/plant-icon.png' width='60rem'></a></li>
+          </ul>
+          <ul class='right'>
+            <li><a href='{% url "about" %}'>About</a></li>
+            {% if user.is_authenticated %}
               <li><a href='{% url "growing_med_create" %}'>Add a Growing Media</a></li>
               <li><a href='{% url "growing_med_index" %}'>View All My Growing Medias</a></li>
               <li><a href='{% url "plants_create" %}'>Add a Plant</a></li>
               <li><a href='{% url "index" %}'>View All My Plants</a></li>
-            </ul>
-          </div>
-        </nav>
-      </header>
+              <li><a href='{% url "logout" %}'>Log Out</a></li>
+            {% else %}
+              <li><a href='{% url "login" %}'>Log In</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
 
     <main class='container'>
         {% block content %}
